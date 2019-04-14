@@ -1,0 +1,78 @@
+<head>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <center>
+        <h1>1,2,3,4,5,...</h1>
+
+        <input type="text">
+        <br>
+        <br>
+        <button onclick="check()">check</button>
+        <h6>correct answers = <span id="correct">0</span> </h6>
+        <h6>wrong answers = <span id="wrong">0</span></h6>
+        <br>
+        <br>
+        <h2></h2>
+    </center>
+</body>
+<script>
+    var result;
+    var correct = 0;
+    var wrong = 0;
+    function add_sequence() {
+        var puzzle = '';
+        var first = Math.floor(Math.random() * 10);
+        var ran = Math.floor(Math.random() * 10);
+        var next = first;
+        puzzle += first;
+        for (var a = 0; a < 3; a++) {
+            next += ran
+            puzzle += ',' + next;
+        }
+        puzzle += ',...';
+        result = next+=ran
+        $("h1").text(puzzle)
+    }
+    function multiply_sequence() {
+        var puzzle = '';
+        var first = Math.floor(Math.random() * 10);
+        var ran = Math.floor(Math.random() * 10);
+        var next = first;
+        puzzle += first;
+        for (var a = 0; a < 3; a++) {
+            next *= ran
+            puzzle += ',' + next;
+        }
+        puzzle += ',...';
+        result = next*=ran
+        $("h1").text(puzzle)
+    }
+
+    multiply_sequence();
+
+
+
+
+
+
+
+
+    function check() {
+        var ans = $('input').val();
+        if (ans == result) {
+            $('h2').text('correct !!!');
+            multiply_sequence();
+            $('input').val('');
+            correct++;
+            $('#correct').text(correct);
+
+
+        } else {
+            $('h2').text('wrong !!!');
+            wrong++;
+            $('#wrong').text(wrong);
+        }
+    }
+</script>
